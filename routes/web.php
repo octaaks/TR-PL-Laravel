@@ -54,3 +54,21 @@ Route::post('/updateminuman/{id}','MinumanController@update');
 Route::get('/deleteminuman/{id}','MinumanController@delete');
 
 Route::get('/daftarmenu','ItemController@loadmenu');
+
+
+Auth::routes();
+
+//<!-- AAAAAAUUUUUUUUUTTTTTTTHHHHHHHHHHH -->
+Auth::routes();
+
+Route::get('/', 'PostController@index')->name('home');
+
+Route::resource('users', 'UserController');
+
+Route::resource('roles', 'RoleController');
+
+Route::resource('permissions', 'PermissionController');
+
+Route::resource('posts', 'PostController');
+
+Route::get('/home', 'HomeController@index')->name('home');
