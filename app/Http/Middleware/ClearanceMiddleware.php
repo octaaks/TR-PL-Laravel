@@ -15,7 +15,7 @@ class ClearanceMiddleware {
      */
     public function handle($request, Closure $next) {     
 
-        if (Auth::user()->hasPermissionTo('Kelola Akun')) //If user has this //permission
+        if (Auth::user()->hasPermissionTo('Full Access')) //If user has this //permission
         {
             return $next($request);
         }

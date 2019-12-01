@@ -1,15 +1,19 @@
-{{-- \resources\views\users\index.blade.php --}}
 @extends('layouts.master')
-
-@section('title', '| Users')
-
+@section('title', 'Daftar Menu')
 @section('content')
 
-<div class="col-lg-10 col-lg-offset-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html>
+<head>
+</head>
+<body>
+	
+ 
+<div class="col-lg col-lg-offset-1">
     <h1><i class="fa fa-users"></i> User Administration <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>
     <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a></h1>
     <hr>
-    <div class="table-responsive">
+    <div class="table">
         <table class="table table-bordered table-striped">
 
             <thead>
@@ -31,10 +35,9 @@
                     <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
                     <td>{{  $user->roles()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of roles associated to a user and convert to string --}}
                     <td>
-                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
-
+                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info btn-sm pull-left" style="margin-right: 3px;">Edit</a>
                     {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id] ]) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}
                     {!! Form::close() !!}
 
                     </td>
@@ -48,5 +51,8 @@
     <a href="{{ route('users.create') }}" class="btn btn-success">Add User</a>
 
 </div>
+
+</body>
+</html>
 
 @endsection

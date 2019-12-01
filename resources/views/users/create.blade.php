@@ -1,10 +1,14 @@
-{{-- \resources\views\users\create.blade.php --}}
 @extends('layouts.master')
-
-@section('title', '| Add User')
-
+@section('title', 'Tambah User')
 @section('content')
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html>
+<head>
+</head>
+<body>
+	
+    
 <div class='col-lg-4 col-lg-offset-4'>
 
     <h1><i class='fa fa-user-plus'></i> Add User</h1>
@@ -47,5 +51,9 @@
     {{ Form::close() }}
 
 </div>
+
+
+</body>
+</html>
 
 @endsection

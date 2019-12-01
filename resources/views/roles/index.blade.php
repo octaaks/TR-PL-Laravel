@@ -1,10 +1,14 @@
-{{-- \resources\views\roles\index.blade.php --}}
 @extends('layouts.master')
-
-@section('title', '| Roles')
-
+@section('title', 'Roles')
 @section('content')
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html>
+<head>
+</head>
+<body>
+	
+ 
 <div class="col-lg-10 col-lg-offset-1">
     <h1><i class="fa fa-key"></i> Roles
 
@@ -46,5 +50,8 @@
     <a href="{{ URL::to('roles/create') }}" class="btn btn-success">Add Role</a>
 
 </div>
+
+</body>
+</html>
 
 @endsection

@@ -44,7 +44,7 @@ class ItemController extends Controller
     
     public function loadmenu(Request $request){
         if($request->has('cari')){
-            $data_item = \App\Item::where('kode', 'LIKE','%'.$request->cari.'%')->get();
+            $data_item = \App\Item::where('jenis', 'LIKE','%'.$request->cari.'%')->get();
         }else{
 
             $data_item = \App\Item::all();

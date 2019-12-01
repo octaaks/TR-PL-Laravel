@@ -25,6 +25,7 @@
   <thead>
     <tr>
 			<th>KODE</th>
+			<th>JENIS</th>
 			<th>NAMA</th>
 			<th>HARGA</th>
 			<th>ACTION</th>
@@ -34,6 +35,7 @@
     @foreach($data_item as $item)
 		<tr>
 			<td>{{$item->kode}}</td>
+			<td>{{$item->jenis}}</td>
 			<td>{{$item->nama}}</td>
 			<td>{{$item->harga}}</td>
 			<td width="20%">
@@ -71,6 +73,17 @@
                     <td>KODE</td>
                     <td><input class="form-control" type="text" placeholder="Masukkan Kode" name="kode"></td>
                 </tr>
+                <td>JENIS</td>
+                    <td>
+                        
+					<select class="custom-select" name="jenis">
+						<option selected>Pilih Jenis</option>
+						<option value="Makanan">Makanan</option>
+						<option value="Minuman">Minuman</option>
+					</select>
+
+                    </td>
+                </tr>
                 <tr>
                     <td>NAMA</td>
                     <td><input class="form-control" type="text" placeholder="Masukkan Nama" name="nama"></td>
@@ -83,7 +96,9 @@
                 </tr>
                 <tr>
                     <td>GAMBAR</td>
-                    <td><input class="form-control" type="text" placeholder="Masukkan URL Gambar" name="gambar"></td>
+                    <td><input class="form-control" type="text" placeholder="Masukkan URL Gambar" name="gambar">
+                    
+                    </td>
                     
                 </tr>
                 <tr>
@@ -95,55 +110,6 @@
 		</div>
 		<div class="modal-footer">
         
-		</div>
-		</div>
-	</div>
-	</div>
-
-<!-- Modal TAMBAH -->
-	<div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-		<div class="modal-header">
-			<h5 class="modal-title" id="exampleModalLabel">Tambah Menu</h5>
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-			</button>
-		</div>
-		<div class="modal-body">
-            <form method="post" action="/additem">
-            {{ csrf_field() }}
-            <div class="">
-            <table class="table table-borderless  table-sm">
-                <tr>
-                    <input type="hidden" name="id" required="">
-                </tr>
-                <tr>
-                    <td>KODE</td>
-                    <td><input class="form-control" type="text" placeholder="Masukkan Kode" name="kode"></td>
-                </tr>
-                <tr>
-                    <td>NAMA</td>
-                    <td><input class="form-control" type="text" placeholder="Masukkan Nama" name="nama"></td>
-                    
-                </tr>
-                <tr>
-                    <td>HARGA</td>
-                    <td><input class="form-control" type="text" placeholder="Masukkan Harga" name="harga"></td>
-                    
-                </tr>
-                <tr>
-                    <td>GAMBAR</td>
-                    <td><input class="form-control" type="text" placeholder="Masukkan URL Gambar" name="gambar"></td>
-                    
-                </tr>
-                <tr>
-                    <td colspan="2"><center><input class="btn btn-primary btn-lg btn-block" type="submit" value="Tambah"></td>
-
-                </tr>
-            </table>
-        </form>
-
 		</div>
 		</div>
 	</div>

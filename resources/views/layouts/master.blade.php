@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title')</title>
+  <title>Resto UwU -@yield('title')</title>
 
-
+  <link rel="shortcut icon" href="../../dist/img/icon.png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -103,8 +103,8 @@
   <aside class="main-sidebar sidebar-dark-orange elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link navbar-orange">
-      <img src="../../dist/img/AdminLTELogo.png"
-           alt="AdminLTE Logo"
+      <img src="../../dist/img/icon.png"
+           alt="UwU Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Restoran UwU</span>
@@ -115,7 +115,7 @@
       <!-- Sidebar user (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="../../dist/img/una.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -127,7 +127,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <!-- MENU -->
-          
+          @hasrole('Pelanggan')
           <li class="nav-item">
             <a href="/daftarmenu" class="nav-link">
               <i class="nav-icon far ion-android-apps"></i>
@@ -137,6 +137,7 @@
               </p>
             </a>
           </li>
+          @endrole
 
           <li class="nav-item">
             <a href="/viewitem" class="nav-link">
@@ -150,19 +151,29 @@
           
           <li class="nav-item">
             <a href="/history" class="nav-link">
-              <i class="nav-icon far ion-android-apps"></i>
+              <i class="nav-icon far ion-cash"></i>
+              <p>
+                Kelola Transaksi
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="/history" class="nav-link">
+              <i class="nav-icon far ion-ios-list"></i>
               <p>
                 History Transaksi
                 <span class="badge badge-info right"></span>
               </p>
             </a>
           </li>
-
+@hasrole('Admin')
           <li class="nav-header">Kelola Akun</li>
           
           <li class="nav-item">
             <a href=" {{ route('users.index')}} " class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+              <i class="nav-icon far ion-person"></i>
               <p>
                 Kelola User
                 <span class="badge badge-info right"></span>
@@ -172,7 +183,7 @@
           
           <li class="nav-item">
             <a href=" {{ route('roles.index')}} " class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+              <i class="nav-icon far ion-person-stalker"></i>
               <p>
               Kelola Role
                 <span class="badge badge-info right"></span>
@@ -182,40 +193,14 @@
           
           <li class="nav-item">
             <a href=" {{ route('permissions.index')}} " class="nav-link">
-              <i class="nav-icon far fa-calendar-alt"></i>
+              <i class="nav-icon far ion-unlocked"></i>
               <p>
               Kelola Permission
                 <span class="badge badge-info right"></span>
               </p>
             </a>
           </li>
-
-
-          <li class="nav-header">-----</li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Manage Users
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>User Baru</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Daftar User</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-
+@endrole
 
         </ul>
       </nav>

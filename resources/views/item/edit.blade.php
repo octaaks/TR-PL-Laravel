@@ -20,6 +20,17 @@
 				<td><input class="form-control" type="text" placeholder="Kode" name="kode"  value="{{ $item->kode }}"></td>
 			</tr>
 			<tr>
+				<td>JENIS</td>
+				<td>
+					<select class="custom-select" name="jenis" id="select1">
+						<option selected>Jenis</option>
+						<option value="Makanan" @if($item->jenis == 'Makanan') selected @endif>Makanan</option>
+						<option value="Minuman" @if($item->jenis == 'Minuman') selected @endif>Minuman</option>
+					</select>
+				</td>
+				
+			</tr>
+			<tr>
 				<td>NAMA</td>
 				<td><input class="form-control" type="text" placeholder="Nama" name="nama"  value="{{ $item->nama }}"></td>
 				

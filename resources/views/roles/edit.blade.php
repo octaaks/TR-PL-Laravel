@@ -1,9 +1,14 @@
 @extends('layouts.master')
-
-@section('title', '| Edit Role')
-
+@section('title', 'Edit Role')
 @section('content')
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<html>
+<head>
+</head>
+<body>
+	
+ 
 <div class='col-lg-4 col-lg-offset-4'>
     <h1><i class='fa fa-key'></i> Edit Role: {{$role->name}}</h1>
     <hr>
@@ -27,5 +32,8 @@
 
     {{ Form::close() }}    
 </div>
+
+</body>
+</html>
 
 @endsection
