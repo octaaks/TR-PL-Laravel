@@ -12,6 +12,9 @@ class User extends Authenticatable
     use HasRoles;
     use Notifiable;
 
+    public function transaksi(){
+        return $this->hasMany('App\Transaksi');
+    }
     /**
      * The attributes that are mass assignable.
      *

@@ -49,8 +49,14 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
       </li>
-    </ul> 
+    </ul>
 
+    @hasrole('Pelanggan')
+    <a href="{{route('item.shoppingCart')}}" role="button" class="btn btn-outline-dark" style="margin-left: 3rem" >
+                                    
+      <i class="fas ion-ios-cart"></i> <b> Pesanan Anda  </b> <span class="badge badge-secondary">{{Session::has('cart')?Session::get('cart')->totalQty : ''}}</span>
+    </a>
+    @endrole
     <!-- SEARCH FORM 
     <form class="form-inline ml-3">
       <div class="input-group input-group-sm">
@@ -135,10 +141,11 @@
                 Daftar Menu
                 <span class="badge badge-info right"></span>
               </p>
-            </a>
+            </a> 
           </li>
           @endrole
 
+          @hasrole('Admin')
           <li class="nav-item">
             <a href="/viewitem" class="nav-link">
               <i class="nav-icon far ion-android-apps"></i>
@@ -168,7 +175,7 @@
               </p>
             </a>
           </li>
-@hasrole('Admin')
+          
           <li class="nav-header">Kelola Akun</li>
           
           <li class="nav-item">

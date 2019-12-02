@@ -53,7 +53,7 @@ Route::get('/editminuman/{id}','MinumanController@edit');
 Route::post('/updateminuman/{id}','MinumanController@update');
 Route::get('/deleteminuman/{id}','MinumanController@delete');
 
-Route::get('/daftarmenu','ItemController@loadmenu');
+Route::get('/daftarmenu',['uses'=>'ItemController@loadmenu','as'=>'item.index']);
 
 Auth::routes();
 
@@ -67,3 +67,12 @@ Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 
 Route::get('/', 'HomeController@index')->name('home');
+
+//cart
+
+Route::get('addtocart/{id}',['uses'=> 'ItemController@GetAddToCart', 'as' => 'item.addToCart']);
+
+Route::get('/shoppingcart',['uses'=> 'ItemController@GetCart', 'as' => 'item.shoppingCart']);
+
+Route::get('/checkout',['uses'=> 'ItemController@GetCheckout', 'as' => 'checkout']);
+

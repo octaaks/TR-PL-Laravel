@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Item;
+use App\Cart;
+use Session;
 
 class ItemController extends Controller
 {
@@ -50,5 +53,35 @@ class ItemController extends Controller
             $data_item = \App\Item::all();
         }
     	return view('/daftarmenu',['data_item' => $data_item]);
+    }
+    
+    public function GetAddToCart(Request $request, $id){
+        $item = Item::find($id);
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add($item, $item->id);
+
+        $request->session()->put('cart',$cart);
+        //dd($request->session()->get('cart'));
+        return redirect()->route('item.index');
+    }
+    
+    public function GetCart(){
+        if(!Session::has('cart')){
+            return view('shoppingcart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('shoppingcart',['data_item' => $cart->items,'totalPrice' => $cart -> totalPrice]);
+    }
+    
+    public function GetCheckout(){
+        if(!Session::has('cart')){
+            return view('shoppingcart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $total = $cart -> totalPrice;
+        return view('checkout',['total' => $total]);
     }
 }

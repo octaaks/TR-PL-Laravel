@@ -38,11 +38,8 @@
 		<li class="list-group-item">Rp. {{$item->harga}}</li>
 		<li class="list-group-item">
 		<div class="input-group mb-3">
-			<input type="text" class="form-control" placeholder="Jumlah" value="1" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<button class="btn btn-outline-secondary" type="button">+</button>
-				</div>
-			</div>
+			<a class="btn btn-primary" href="{{ route('item.addToCart', ['id'=> $item->id])}}" role="button">Tambah</a>
+		</div>
 		</li>
 	</ul>
 	</div>
