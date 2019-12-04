@@ -28,9 +28,6 @@ Route::get('/transaksi', function () {
     return view('transaksi');
 });
 
-Route::get('/history', function () {
-    return view('history');
-});
 
 //ITEM
 Route::get('/viewitem','ItemController@view');
@@ -71,8 +68,14 @@ Route::get('/', 'HomeController@index')->name('home');
 //cart
 
 Route::get('addtocart/{id}',['uses'=> 'ItemController@GetAddToCart', 'as' => 'item.addToCart']);
+Route::get('reducetocart/{id}',['uses'=> 'ItemController@GetReduceToCart', 'as' => 'item.reduceToCart']);
 
 Route::get('/shoppingcart',['uses'=> 'ItemController@GetCart', 'as' => 'item.shoppingCart']);
 
 Route::get('/checkout',['uses'=> 'ItemController@GetCheckout', 'as' => 'checkout']);
+Route::post('/postcheckout',['uses'=> 'ItemController@postCheckout', 'as' => 'checkout']);
 
+Route::get('/pesanan','ItemController@viewPesanan');
+Route::get('/history','ItemController@viewTransaksi');
+Route::post('/verifikasi','ItemController@Verivikasi');
+Route::post('/verifikasi{id}','ItemController@DeleteVerivikasi');

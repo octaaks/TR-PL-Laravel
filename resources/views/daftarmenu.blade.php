@@ -37,8 +37,11 @@
 		<li class="list-group-item"><b>{{$item->nama}}</b></li>
 		<li class="list-group-item">Rp. {{$item->harga}}</li>
 		<li class="list-group-item">
+		
 		<div class="input-group mb-3">
+			@hasrole('Pelanggan')
 			<a class="btn btn-primary" href="{{ route('item.addToCart', ['id'=> $item->id])}}" role="button">Tambah</a>
+			@endrole
 		</div>
 		</li>
 	</ul>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Item;
 use App\Cart;
 use Session;
+use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller
 {
@@ -18,6 +19,16 @@ class ItemController extends Controller
         }
 
     	return view('item.view',['data_item' => $data_item]);
+    }
+    
+    public function viewTransaksi(){
+        $data_transaksi = \App\Transaksi::all();
+        return view('history',['data_transaksi' => $data_transaksi]);
+    }
+    
+    public function viewPesanan(){
+        $data_pesanan = \App\Pesanan::all();
+        return view('pesanan',['data_pesanan' => $data_pesanan]);
     }
 
     function add(Request $request){
@@ -65,6 +76,16 @@ class ItemController extends Controller
         //dd($request->session()->get('cart'));
         return redirect()->route('item.index');
     }
+    public function GetReduceToCart(Request $request, $id){
+        $item = Item::find($id);
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->del($item, $item->id);
+
+        $request->session()->put('cart',$cart);
+        //dd($request->session()->get('cart'));
+        return redirect()->route('item.index');
+    }
     
     public function GetCart(){
         if(!Session::has('cart')){
@@ -83,5 +104,36 @@ class ItemController extends Controller
         $cart = new Cart($oldCart);
         $total = $cart -> totalPrice;
         return view('checkout',['total' => $total]);
+    }
+    public function postCheckout(Request $request){
+        DB::table('pesanan')->insert(
+            [
+                'nama_item' => $request->nama_item,
+                'jumlah' => $request->jumlah,
+                'total' => $request->harga,
+                'status' => "Belum Selesai"
+                
+            ]
+        );
+        return redirect('/daftarmenu');
+    }
+
+    public function Verivikasi(Request $request){
+        DB::table('transaksi')->insert(
+            [
+                'nama_item' => $request->nama_item,
+                'jumlah' => $request->jumlah,
+                'total' => $request->total,
+                'status' => "Selesai"
+            ]
+        );
+        
+        return redirect('/history');
+    }
+    public function DeleteVerivikasi(Request $request,$id){
+        
+        $pesanan = \App\Pesanan::find($id);
+        $pesanan->delete($request);
+        return redirect('/history');
     }
 }

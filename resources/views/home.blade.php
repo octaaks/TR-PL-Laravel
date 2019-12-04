@@ -14,7 +14,16 @@
                         </div>
                     @endif
 
+
                     You are logged in!
+
+                    <br> 
+                    <br> 
+                        @hasrole('Pelanggan')
+                        <a href="/daftarmenu" role="button" class="btn btn-outline-dark" style="margin-left: 0rem" >   
+                            <b> BUAT PESANAN </b>
+                        </a>
+                        @endrole
                 </div>
             </div>
         </div>

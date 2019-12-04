@@ -175,7 +175,41 @@
               </p>
             </a>
           </li>
+          @endrole
           
+          @hasrole('Kasir')
+
+          <li class="nav-item">
+            <a href="/pesanan" class="nav-link">
+              <i class="nav-icon far ion-android-apps"></i>
+              <p>
+                Pesanan Masuk
+                <span class="badge badge-info right"></span>
+              </p>
+            </a> 
+          </li>
+
+          <li class="nav-item">
+            <a href="/daftarmenu" class="nav-link">
+              <i class="nav-icon far ion-android-apps"></i>
+              <p>
+                Daftar Menu
+                <span class="badge badge-info right"></span>
+              </p>
+            </a> 
+          </li>
+
+          <li class="nav-item">
+            <a href="/history" class="nav-link">
+              <i class="nav-icon far ion-ios-list"></i>
+              <p>
+                History Transaksi
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          @endrole
+@hasrole('Admin')
           <li class="nav-header">Kelola Akun</li>
           
           <li class="nav-item">

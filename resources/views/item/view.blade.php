@@ -15,7 +15,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAdd">
     Tambah Menu
     </button>
-
+<br>
     @if(session('sukses'))
     <div class="alert alert-success" role="alert">
     {{session('sukses')}}
